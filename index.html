@@ -1,0 +1,639 @@
+<head>
+  <meta charset="utf-8">
+  <title>PROFIX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Custom Fonts -->
+  <link rel="stylesheet" href="custom-font/fonts.css" />
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/custom.css" />
+
+  <!-- Internal Styles -->
+  <style>
+    /* General Styling */
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Portfolio Section */
+    #portfolio {
+      background-color: black;
+      padding: 100px 20px 160px;
+      margin-bottom: 0;
+    }
+
+    #portfolio h2,
+    #portfolio p {
+      color: white;
+    }
+
+    #filters {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    #filters .button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #444;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.2s ease;
+    }
+
+    #filters .button:hover,
+    #filters .button.active {
+      background-color: #cc0000;
+      color: #fff;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .grid-item {
+      flex: 1 1 calc(33.333% - 30px);
+      max-width: calc(33.333% - 30px);
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 991px) {
+      .grid-item {
+        flex: 1 1 calc(50% - 30px);
+        max-width: calc(50% - 30px);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .grid-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    .grid-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform 0.3s;
+      display: block;
+    }
+
+    .hover-zoom:hover {
+      transform: scale(1.05);
+    }
+
+    .portfolio_area {
+      background-color: black;
+      padding-bottom: 100px;
+      min-height: 1600px;
+    }
+
+    /* Carousel Caption Centering */
+    .carousel-caption {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      bottom: auto;
+      position: absolute;
+      text-align: center;
+      max-width: 90%;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+
+    .carousel-caption h1, 
+    .carousel-caption h2, 
+    .carousel-caption h3, 
+    .carousel-caption p {
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+
+    .carousel-caption .btn {
+      margin-top: 20px;
+      font-size: 18px;
+      padding: 10px 25px;
+      background-color: #ffc107;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-caption .btn:hover {
+      background-color: #e0a800;
+      color: #fff;
+    }
+
+    /* Reviews Section */
+    #reviews {
+      background: black;
+      padding: 160px 20px;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    #review-form {
+      z-index: 2;
+      position: relative;
+    }
+
+    @media (max-width: 576px) {
+      #reviews {
+        padding-top: 120px;
+      }
+    }
+
+    /* ✅ Services Section Fix */
+    #services {
+      background-color: white;
+      color: black;
+      padding: 80px 0;
+    }
+
+    #services h2,
+    #services h3,
+    #services p {
+      color: black;
+    }
+  </style>
+
+  <!-- jQuery -->
+  <script src="js/jquery-1.12.1.min.js"></script>
+
+  <!-- Bootstrap 5 JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Fancybox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      Fancybox.bind("[data-fancybox='gallery']", {
+        Thumbs: false,
+        Toolbar: {
+          display: ["close"]
+        },
+        Image: {
+          zoom: true,
+          click: "close",
+          wheel: "slide"
+        },
+        Carousel: {
+          infinite: true,
+          autoplay: true
+        }
+      });
+    });
+  </script>
+
+  <!-- Main JS -->
+  <script src="./js/main.js"></script>
+</head>
+
+
+
+<body>
+
+
+  <!-- Header / Navigation -->
+<header>
+  <nav class="navbar navbar-expand-lg" style="background-color: black;">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#" style="color: yellow; font-weight: bold;">PROFIX</a>
+
+      <!-- Mobile Phone Number (shown on sm/md) -->
+      <span class="navbar-text d-inline-block d-lg-none ms-auto">
+        <a href="tel:4058181855" style="color: yellow; text-decoration: none; font-weight: bold;">
+          405‑818‑1855
+        </a>
+      </span>
+
+      <!-- Toggler for mobile nav -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="navbarNav" style="flex-wrap: wrap;">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home" style="color: yellow;">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" style="color: yellow;">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services" style="color: yellow;">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio" style="color: yellow;">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact_form" style="color: yellow;">Contact Us</a></li>
+
+          <!-- Desktop Phone Number -->
+          <li class="nav-item d-none d-lg-block">
+            <a class="nav-link" href="tel:4058181855" style="color: yellow;">
+              405‑818‑1855
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<!-- Carousel Start --> 
+<section id="home" class="home">
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="position: relative; width: 100%; max-height: 700px; overflow: hidden;">
+
+    <div class="carousel-inner">
+
+      <!-- Slide Template -->
+      <style>
+        .carousel-caption h1, 
+        .carousel-caption h2, 
+        .carousel-caption h3, 
+        .carousel-caption p {
+          line-height: 1.4;
+          margin-bottom: 15px;
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Improves contrast */
+        }
+
+        .carousel-caption .btn {
+          margin-top: 20px;
+          font-size: 18px;
+          padding: 10px 25px;
+          background-color: #ffc107;
+          color: #000;
+          border: none;
+          border-radius: 5px;
+          transition: background-color 0.3s;
+        }
+
+        .carousel-caption .btn:hover {
+          background-color: #e0a800;
+          color: #fff;
+        }
+
+        .carousel-caption {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          bottom: auto;
+          position: absolute;
+          text-align: center;
+          max-width: 90%;
+          word-wrap: break-word;
+          white-space: normal;
+        }
+
+        /* 📱 Mobile-specific font scaling */
+        @media (max-width: 768px) {
+          .carousel-caption h1 {
+            font-size: 28px;
+          }
+          .carousel-caption h2 {
+            font-size: 22px;
+          }
+          .carousel-caption h3 {
+            font-size: 18px;
+          }
+          .carousel-caption p {
+            font-size: 16px;
+          }
+        }
+      </style>
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active" style="position: relative;">
+        <img src="images/DRIVEWAY CONSTRUCTION.jpg" class="d-block w-100" alt="Concrete Installation" style="width: 100%; height: 700px; object-fit: cover;">
+        <div style="background: rgba(0, 0, 0, 0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
+        <div class="carousel-caption text-center">
+          <h3 style="color: yellow;">Reliable & Professional</h3>
+          <h1 style="color: white;">Expert Concrete Installation</h1>
+          <h2 style="color: yellow;">Driveways, Sidewalks, Patios</h2>
+          <p>We specialize in high-quality concrete work for residential and commercial needs.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item" style="position: relative;">
+        <img src="images/fence 2.jpg" class="d-block w-100" alt="Fencing Services" style="width: 100%; height: 700px; object-fit: cover;">
+        <div style="background: rgba(0, 0, 0, 0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
+        <div class="carousel-caption text-center">
+          <h3 style="color: yellow;">Secure & Stylish</h3>
+          <h1 style="color: white;">Wood, Iron & Chain Link Fences</h1>
+          <p style="color: yellow;">Custom fencing solutions for privacy, security, and curb appeal.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item" style="position: relative;">
+        <img src="images/PATIO2.png" class="d-block w-100" alt="Patio Construction" style="width: 100%; height: 700px; object-fit: cover;">
+        <div style="background: rgba(0, 0, 0, 0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
+        <div class="carousel-caption text-center">
+          <h3 style="color: yellow;">Custom Outdoor Spaces</h3>
+          <h1 style="color: white;">Patios, Pergolas & Fire Pits</h1>
+          <p style="color: yellow;">Design your dream backyard with our professional hardscaping services.</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item" style="position: relative;">
+        <img src="images/retaining wall.avif" class="d-block w-100" alt="Retaining Walls" style="width: 100%; height: 700px; object-fit: cover;">
+        <div style="background: rgba(0, 0, 0, 0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
+        <div class="carousel-caption text-center">
+          <h3 style="color: yellow;">Strong & Functional</h3>
+          <h1 style="color: white;">Retaining Wall Construction</h1>
+          <p style="color: yellow;">Support your landscape with expertly designed retaining solutions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+
+  </div>
+</section>
+<!-- Carousel End -->
+
+
+
+<!-- About -->
+<section id="about" style="background-color: white; color: black;">
+  <div class="container about_bg">
+      <div class="row">
+          <div class="col-lg-7 col-md-6">
+              <div class="about_content">
+                  <h2>Welcome to Our General Construction Services</h2>
+                  <h3>Quality Craftsmanship in Every Project</h3>
+                  <p>We provide comprehensive construction services including fencing, patios, driveways, retaining walls, pergolas, and more. Whether it’s a small upgrade or a large outdoor transformation, our experienced team delivers top-tier results tailored to your needs.</p>
+                  <p>We take pride in delivering strong, stylish, and lasting solutions. Using quality materials and proven techniques, we ensure every project enhances the beauty, functionality, and value of your property—residential or commercial.</p>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-lg-offset-1">
+              <div class="about_banner">
+                  <img src="images/man.png" alt="Construction Expert at Work" />
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- About end -->
+
+
+
+
+<!-- Why Us -->
+<section id="why_us" style="background-color: white; color: black;">
+  <div class="container text-center">
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+              <div class="head_title">
+                  <h2>WHY CHOOSE US?</h2>
+                  <p>As a trusted general contractor, we bring years of hands-on experience, skilled craftsmanship, and reliable project management to every job. Whether it’s fencing, patios, remodeling, or full-scale outdoor construction, we’re committed to quality, timelines, and client satisfaction.</p>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3 col-sm-6">
+              <div class="why_us_item">
+                  <span class="fa fa-check-square"></span>
+                  <h4>Top-Quality Materials</h4>
+                  <p>We only use proven, long-lasting materials to ensure every structure is built to last and look great for years to come.</p>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+              <div class="why_us_item">
+                  <span class="fa fa-clock-o"></span>
+                  <h4>Timely Project Delivery</h4>
+                  <p>We respect your time and keep projects on schedule without cutting corners, no matter the size or complexity.</p>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+              <div class="why_us_item">
+                  <span class="fa fa-cogs"></span>
+                  <h4>All-in-One Services</h4>
+                  <p>From start to finish, we handle everything—design, permits, construction—so you don’t have to juggle multiple contractors.</p>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+              <div class="why_us_item">
+                  <span class="fa fa-users"></span>
+                  <h4>Experienced & Trustworthy</h4>
+                  <p>Our crew is made up of skilled professionals who care about quality work and long-term client relationships.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Why Us End -->
+
+<!-- Services -->
+
+<!-- Responsive Style -->
+<style>
+    @media (max-width: 768px) {
+      .service_item img {
+        height: 160px !important;
+      }
+    }
+  </style>
+ <!-- Portfolio Section -->
+<section id="portfolio" style="background: black; padding: 100px 20px 160px; overflow: hidden;">
+  <div class="container portfolio_area text-center">
+    <h2 style="color: white; font-size: 2.5rem;">OUR PROJECTS</h2>
+    <p style="color: white; font-size: 1.1rem;">We specialize in top-quality remodeling for both residential and commercial spaces. From kitchen upgrades to full-home renovations, our experienced team brings craftsmanship, detail, and reliability to every project.</p>
+
+    <!-- Filter Buttons -->
+    <div id="filters" style="margin-bottom: 30px;">
+      <button class="button active" data-filter="*">Show All</button>
+      <button class="button" data-filter=".driveways">Driveways</button>
+      <button class="button" data-filter=".patios">Patios</button>
+      <button class="button" data-filter=".foundations">Foundations</button>
+      <button class="button" data-filter=".sidewalks">Sidewalks</button>
+      <button class="button" data-filter=".retaining-walls">Retaining Walls</button>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="grid">
+      <!-- Driveways -->
+      <div class="grid-item driveways">
+        <a href="images/DRIVEWAY CONSTRUCTION.jpg" data-fancybox="gallery" data-caption="Concrete Driveway">
+          <img src="images/DRIVEWAY CONSTRUCTION.jpg" alt="Concrete Driveway" class="grid-image hover-zoom">
+        </a>
+      </div>
+
+      <!-- Patios -->
+      <div class="grid-item patios">
+        <a href="images/IMG_20250430_114639_(7).jpg" data-fancybox="gallery" data-caption="Concrete Patio">
+          <img src="images/IMG_20250430_114639_(7).jpg" alt="Concrete Patio" class="grid-image hover-zoom">
+        </a>
+      </div>
+      <div class="grid-item patios">
+        <a href="images/PATIO2.png" data-fancybox="gallery" data-caption="Custom Patio Design">
+          <img src="images/PATIO2.png" alt="Custom Patio" class="grid-image hover-zoom">
+        </a>
+      </div>
+
+      <!-- Foundations -->
+      <div class="grid-item foundations">
+        <a href="images/concrete_foundation.webp" data-fancybox="gallery" data-caption="Concrete Foundation">
+          <img src="images/concrete_foundation.webp" alt="Concrete Foundation" class="grid-image hover-zoom">
+        </a>
+      </div>
+
+      <!-- Sidewalks -->
+      <div class="grid-item sidewalks">
+        <a href="images/side_walk.jpg" data-fancybox="gallery" data-caption="Concrete Sidewalk">
+          <img src="images/side_walk.jpg" alt="Concrete Sidewalk" class="grid-image hover-zoom">
+        </a>
+      </div>
+
+      <!-- Retaining Walls -->
+      <div class="grid-item retaining-walls">
+        <a href="images/retaining walls.webp" data-fancybox="gallery" data-caption="Retaining Wall">
+          <img src="images/retaining walls.webp" alt="Retaining Wall" class="grid-image hover-zoom">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fancybox Init -->
+<script>
+  Fancybox.bind("[data-fancybox='gallery']", {
+    Thumbs: false,
+    Toolbar: {
+      display: ["close"]
+    },
+    Image: {
+      zoom: true,
+      click: "close",
+      wheel: "slide"
+    },
+    Carousel: {
+      transition: "fade",
+      autoplay: true,
+      infinite: true
+    }
+  });
+</script>
+
+<!-- Isotope Layout Script -->
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const grid = document.querySelector('.grid');
+    const iso = new Isotope(grid, {
+      itemSelector: '.grid-item',
+      layoutMode: 'fitRows'
+    });
+
+    const filterButtons = document.querySelectorAll('#filters .button');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const filterValue = this.getAttribute('data-filter');
+        iso.arrange({ filter: filterValue });
+
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  });
+</script>
+
+<!-- Reviews Section -->
+<section id="reviews" style="background: black; padding: 80px 20px;">
+  <div class="container">
+    <h2 class="text-center mb-4" style="color: white;">Leave Us a Review</h2>
+    <div id="form-status" style="text-align:center; font-weight:bold; margin:10px 0;"></div>
+
+    <form id="review-form" style="max-width: 600px; margin: auto; background: yellow; padding: 20px; border-radius: 10px;">
+      <input type="text" name="name" id="name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <textarea name="message" id="message" placeholder="Your Feedback..." required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+      <button type="submit" style="width: 100%; padding: 10px; background: black; color: yellow;">Send Review</button>
+    </form>
+
+    <div id="reviews-list" style="max-width: 600px; margin: 30px auto;"></div>
+  </div>
+</section>
+
+<!-- Review Form Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('review-form');
+    const formStatus = document.getElementById('form-status');
+    const reviewsList = document.getElementById('reviews-list');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      fetch('submit_review.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        formStatus.textContent = data.success ? "✅ Review submitted!" : "❌ " + (data.error || "Failed to submit.");
+        formStatus.style.color = data.success ? "green" : "red";
+        if (data.success) {
+          form.reset();
+          loadReviews();
+        }
+      })
+      .catch(() => {
+        formStatus.textContent = "❌ Network error.";
+        formStatus.style.color = "red";
+      });
+    });
+
+    function loadReviews() {
+      fetch('get_reviews.php')
+        .then(res => res.text())
+        .then(html => {
+          reviewsList.innerHTML = html;
+        });
+    }
+
+    loadReviews();
+  });
+</script>
+
+<!-- Footer -->
+<footer style="background-color: rgb(8, 6, 22); color: white; padding: 60px 0;">
+  <div class="container footer_top">
+    <div class="row">
+      <div class="col-lg-4 col-sm-7">
+        <div class="footer_item">
+          <h4>About Our Company</h4>
+          <p>We are a trusted general contracting company with a strong commitment to delivering high-quality construction services. From residential renovations to large-scale commercial projects, we bring expertise, reliability, and attention to detail to every job.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
